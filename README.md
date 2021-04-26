@@ -41,7 +41,7 @@ yarn create @vitejs/app my-vue-app --template vue
 
 - vue
 
-- vue-ts 
+- vue-ts
 
 - react
 
@@ -60,36 +60,38 @@ yarn create @vitejs/app my-vue-app --template vue
 
 vite配置的文件所在的目录 vite.config.js / vite.config.ts
 
-  - **别名**
+- **别名**
 
   ```ts
   import {defineConfig} from 'vite' //引入后又语法提示
-  import vue from '@vitejs/plugin-vue'
-  // @ts-ignore
-  import path from 'path'
-  
-  // https://vitejs.dev/config/
-  export default defineConfig({
-  
-    plugins: [vue()],
-    resolve: {
-      alias: {
-        // 别名 即@代表src目录
-        "@": path.resolve(__dirname, "src"),
-        "comps": path.resolve(__dirname, "src/components"),
-        "apis": path.resolve(__dirname, "src/apis"),
-        "views": path.resolve(__dirname, "src/views"),
-        "utils": path.resolve(__dirname, "src/utils"),
-        "routes": path.resolve(__dirname, "src/routes"),
-        "styles": path.resolve(__dirname, "src/styles"),
-        "assets": path.resolve(__dirname, "src/assets"),
-      }
-    },
-  })
-  
-  ```
+import vue from '@vitejs/plugin-vue'
+// @ts-ignore
+import path from 'path'
 
-  具体作用如下图 就是@ = src 路径
+// https://vitejs.dev/config/
+export default defineConfig({
+
+  plugins: [vue()],
+  resolve: {
+    alias: {
+      // 别名 即@代表src目录
+      "@": path.resolve(__dirname, "src"),
+      "comps": path.resolve(__dirname, "src/components"),
+      "apis": path.resolve(__dirname, "src/apis"),
+      "views": path.resolve(__dirname, "src/views"),
+      "utils": path.resolve(__dirname, "src/utils"),
+      "routes": path.resolve(__dirname, "src/routes"),
+      "styles": path.resolve(__dirname, "src/styles"),
+      "assets": path.resolve(__dirname, "src/assets"),
+    }
+  },
+})
+
+```
+
+具体作用如下图
+
+![1619197401930](assets/1619197401930.png)
 
 - **配置服务器代理**
 
@@ -121,7 +123,7 @@ vite配置的文件所在的目录 vite.config.js / vite.config.ts
 
 ```
 
-- **jsx支持**   
+- **jsx支持**
 
   感觉就是让人写react一样写vue3。
 
@@ -180,7 +182,7 @@ export default defineConfig({
   }
 ```
 
-- **配置mock数据**
+- **配置mock**
 
 ```js
 yarn add mockjs  vite-plugin-mock -D
@@ -292,3 +294,22 @@ createApp(App).use(router).use(store).mount('#app')
  <h1 @click="$store.commit('add')">{{$store.state.counter}}</h1>
 ```
 
+- **样式管理（sass）**
+
+```
+npm  i sass -D
+
+// main.js 
+import './styles/index.scss'
+// index.scss 可以支持各种变量引入
+```
+
+- **封装axios**
+
+```js
+npm i axios -S
+
+直接封装就可以使用。
+```
+
+未完可能待续，也可能不续。
